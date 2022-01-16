@@ -3,7 +3,7 @@ resource "aws_security_group" "bastion" {
   vpc_id      = "${var.vpc_id}"
   description = "Bastion security group (only SSH inbound access is allowed)"
 
-  tags {
+  tags = {
     Name = "${var.name}"
   }
 }
@@ -41,7 +41,7 @@ resource "aws_security_group_rule" "bastion_all_egress" {
 data "template_file" "user_data" {
   template = "${file("${path.module}/${var.user_data_file}")}"
 
-  vars {
+  vars = {
     s3_bucket_name              = "${var.s3_bucket_name}"
     s3_bucket_uri               = "${var.s3_bucket_uri}"
     ssh_user                    = "${var.ssh_user}"
