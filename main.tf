@@ -75,7 +75,7 @@ resource "aws_launch_configuration" "bastion" {
   security_groups = [
     "${compact(concat
                 (tolist[
-                  (aws_security_group.bastion.id)], 
+                  "(Saws_security_group.bastion.id)"], 
                   split(",", "${var.security_group_ids}")))}",
   ]
 
